@@ -1,0 +1,74 @@
+{
+  "name": "360-viewer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Visualizador de Imagens 360 Local",
+  "author": "Seu Nome",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev-electron": "cross-env NODE_ENV=development concurrently \"vite\" \"wait-on tcp:5173 && electron .\"",
+    
+    "compile:electron": "esbuild electron/main.ts --bundle --platform=node --target=node18 --format=cjs --outfile=dist-electron/main.cjs --external:electron",
+    "compile:react": "vite build",
+    
+    "build": "npm run clean && npm run compile:electron && npm run compile:react",
+    "build:win": "npm run build && electron-builder --win nsis --config.directories.output=release",
+    
+    "preview": "vite preview",
+    "clean": "rimraf dist dist-electron release"
+  },
+  "build": {
+    "appId": "com.360.viewer",
+    "productName": "360 Viewer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "resources/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "electron-serve": "^3.0.1",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "three": "^0.182.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^9.0.0",
+    "cross-env": "^10.1.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.1",
+    "esbuild": "^0.25.0",
+    "postcss": "^8.4.35",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "wait-on": "^8.0.1"
+  }
+}

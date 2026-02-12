@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- 🔥 CRITICAL: NO CSP - permite scripts locais no Electron -->
+    <link rel="icon" href="./assets/favicon.ico" /> 
+    <title>360 Viewer</title>
+
+    <!-- Base Styles -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #0a0a0a;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      }
+
+      #root {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Hide scrollbars */
+      ::-webkit-scrollbar { display: none; }
+      
+      /* Electron frame-adjustment for Windows */
+      body {
+        -webkit-app-region: drag;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- 🔥 CRITICAL: Script de entrada do Vite - caminho relativo -->
+    <script type="module" src="./index.tsx"></script>
+    
+    <!-- 🔥 DEBUG: Enhanced error logging -->
+    <script>
+      console.log('🔍 HTML loaded, root element:', document.getElementById('root'));
+      
+      window.onerror = function(msg, url, line, col, error) {
+        console.error('❌ Global error:', msg, 'at', url, line, col, error);
+        return false;
+      };
+
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('❌ Unhandled promise rejection:', event.reason);
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('✅ DOM Content Loaded');
+      });
+    </script>
+  </body>
+</html>

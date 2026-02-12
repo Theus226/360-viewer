@@ -1,0 +1,71 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom base styles */
+@layer base {
+  html, body {
+    @apply w-full h-full overflow-hidden;
+  }
+  
+  body {
+    @apply bg-background text-white;
+  }
+
+  #root {
+    @apply w-full h-full;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .btn-close {
+    @apply p-1.5 rounded hover:bg-white/10 transition-colors duration-200 flex items-center justify-center;
+  }
+
+  .cursor-grab-active {
+    @apply cursor-grab active:cursor-grabbing;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  /* Hide scrollbars while keeping functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Electron frame adjustment */
+  .electron-titlebar {
+    -webkit-app-region: drag;
+    user-select: none;
+  }
+
+  /* Todos os botões dentro da titlebar não devem ser arrastáveis */
+  .electron-titlebar button {
+    -webkit-app-region: no-drag;
+  }
+
+  .electron-titlebar div {
+    -webkit-app-region: no-drag;
+  }
+
+  .electron-button {
+    -webkit-app-region: no-drag;
+  }
+
+  /* Garantir que drag and drop funcione em todo o app exceto titlebar */
+  body {
+    -webkit-app-region: no-drag;
+  }
+
+  /* Canvas/3D viewer não deve ser arrastável */
+  canvas {
+    -webkit-app-region: no-drag;
+  }
+}

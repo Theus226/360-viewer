@@ -1,0 +1,5 @@
+{
+  "name": "360 Previsualize",
+  "description": "A minimalist, high-performance 360° equirectangular image viewer with drag-and-drop functionality.",
+  "requestFramePermissions": []
+}
