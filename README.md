@@ -7,10 +7,6 @@
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![Three.js](https://img.shields.io/badge/Three.js-WebGL-black?logo=three.js)
 
-## 📸 Preview
-
-![App Demo](https://via.placeholder.com/800x450.png?text=360-viewer+Preview)
-
 ## 🚀 The Problem & The Solution
 
 This project was developed to optimize the workflow in architectural visualization studios.

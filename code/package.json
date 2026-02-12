@@ -15,6 +15,7 @@
     
     "build": "npm run clean && npm run compile:electron && npm run compile:react",
     "build:win": "npm run build && electron-builder --win nsis --config.directories.output=release",
+    "build:portable": "npm run build && electron-builder --win portable --config.directories.output=release",
     
     "preview": "vite preview",
     "clean": "rimraf dist dist-electron release"
