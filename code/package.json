@@ -23,6 +23,7 @@
   "build": {
     "appId": "com.360.viewer",
     "productName": "360 Viewer",
+    "copyright": "Copyright © 2026 Matheus Magalhães",
     "directories": {
       "output": "release"
     },
@@ -37,7 +38,8 @@
     "win": {
       "target": "nsis",
       "icon": "assets/icon.ico",
-      "artifactName": "${productName}-Setup-${version}.${ext}"
+      "artifactName": "${productName}-Setup-${version}.${ext}",
+      "publisherName": "Matheus Magalhães"
     },
     "nsis": {
       "oneClick": false,
